@@ -10,7 +10,7 @@
 	<style>
     div {
       font-size: 15px;
-      color: blue;
+      color: black;
       margin: 5px;
     }
 
@@ -28,57 +28,106 @@
     label {
       margin-right: 0.5rem;
     }
+
+    p {
+      color: hotpink;
+    }
+
+    th {
+      color: green;
+    }
+
   </style>
 </head>
 
 <body>
 
 <div id="app">
-	<h2 style="color:red;">{{ message01 }}</h2>
+	<h2 style="color:orange;">{{ message01 }}</h2>
+
+	<p>您所選擇的項目:{{ checkName.join(',') }}</p>
 
 	<form style="margin: 1rem 0">
 		<label>
-			<input type="checkbox" value="名稱" v-model="checkName" value="名稱">名稱
-		</label>
-		<label>
-			<input type="checkbox" value="甜度" v-model="checkName" value="甜度">甜度
+			<input type="checkbox" value="平台服務" v-model="checkName" value="平台服務">平台服務
 		</label>
 		<label>
 			<input type="checkbox" value="特色" v-model="checkName" value="特色">特色
 		</label>
 		<label>
-			<input type="checkbox" value="特色" v-model="checkName" value="特色">特色
+			<input type="checkbox" value="付款方式" v-model="checkName" value="付款方式">付款方式
 		</label>
 		<label>
-			<input type="checkbox" value="特色" v-model="checkName" value="特色">特色
+			<input type="checkbox" value="常見優惠" v-model="checkName" value="常見優惠">常見優惠
+		</label>
+		<label>
+			<input type="checkbox" value="外送費用" v-model="checkName" value="外送費用">外送費用
+		</label>
+		<label>
+			<input type="checkbox" value="外送地區" v-model="checkName" value="外送地區">外送地區
 		</label>
 	</form>
 
-	<p>您所選得是:{{ checkName.join(',') }}</p>
 
 	<table border="1" width="70%" cellspacing="0" cellpadding="0">
 		<tr>
-			<th>品種</th>
-			<th v-for="m in mangos">
+			<th>圖示</th>
+			<th v-for="m in fooddelivery">
 				<div><img v-bind:src="m.cover" alt=""></div>
 			</th>
 		</tr>
-		<tr v-show="checkName.includes('口感')">
-			<th>口感</th>
-			<td v-for="m in mangos">
-				<div>{{ m.taste }}</div>
-			</td>
+		<tr>
+			<th>名稱</th>
+			<th>
+				<div>UberEats</div>
+			</th>
+			<th>
+				<div>Foodpanda</div>
+			</th>
+			<th>
+				<div>Lalamove</div>
+			</th>
+			<th>
+				<div>foodomo</div>
+			</th>
+			<th>
+				<div>YOWOO</div>
+			</th>
 		</tr>
-		<tr v-show="checkName.includes('甜度')">
-			<th>甜度</th>
-			<td v-for="m in mangos">
-				<div>{{ m.sweetness }}</div>
+		<tr v-show="checkName.includes('平台服務')">
+			<th>平台服務</th>
+			<td v-for="m in fooddelivery">
+				<div>{{ m.service }}</div>
 			</td>
 		</tr>
 		<tr v-show="checkName.includes('特色')">
 			<th>特色</th>
-			<td v-for="m in mangos">
+			<td v-for="m in fooddelivery">
 				<div>{{ m.feature }}</div>
+			</td>
+		</tr>
+		<tr v-show="checkName.includes('付款方式')">
+			<th>付款方式</th>
+			<td v-for="m in fooddelivery">
+				<div>{{ m.payment }}</div>
+			</td>
+		</tr>
+		<tr v-show="checkName.includes('常見優惠')">
+			<th>常見優惠</th>
+			<td v-for="m in fooddelivery">
+				<div>{{ m.preference }}</div>
+			</td>
+		</tr>
+		<tr v-show="checkName.includes('外送費用')">
+			<th>外送費用</th>
+			<td v-for="m in fooddelivery">
+				<div>{{ m.freight }}</div>
+			</td>
+		</tr>
+		<tr v-show="checkName.includes('外送地區')">
+			<th>外送地區</th>
+			<td v-for="m in fooddelivery">
+				<div>{{ m.area }}</div>
 			</td>
 		</tr>
 	</table>
@@ -88,39 +137,54 @@
     const vm = Vue.createApp({
       data() {
         return {
-          mangos: [
+          fooddelivery: [
             {
               cover: "table_pic/pic01.png",
-              taste: "細緻肉厚",
-              sweetness: "高",
-              feature: "濃郁香氣",
+              service: "外送、外帶自取",
+              feature: "帳號跟Uber共通，優惠可互用",
+              payment: "現金、信用卡（需國外手續費）、LINE Pay、Apple Pay",
+              preference: "首購優惠、免運、滿額折抵",
+              freight: "NT$15~60",
+              area: "基隆、台北、台中、台南、高雄、桃園、新竹",
             },
             {
               cover: "table_pic/pic02.png",
-              taste: "細緻多汁",
-              sweetness: "清爽甜",
-              feature: "水蜜桃香",
+              service: "外送、外帶自取、熊貓商城（生鮮雜貨）",
+              feature: "24小時美食外送服務",
+              payment: "現金、信用卡、Apple Pay",
+              preference: "首購優惠、免運、滿額折抵、訂餐贈品",
+              freight: "NT$19~45",
+              area: "基隆、雙北、台中、台南、高雄、桃園、新竹、苗栗",
             },
             {
               cover: "table_pic/pic03.jpg",
-              taste: "Q彈紮實",
-              sweetness: "高",
-              feature: "龍眼口味",
+              service: "餐飲美食外送、專件快遞、零售批發出貨、搬家",
+              feature: "不限合作店家，提供排隊代買",
+              payment: "現金、電子錢包",
+              preference: "首購優惠、免運、滿額折抵",
+              freight: "隨著運送距離與勾選的特殊服務有所不同",
+              area: "全台各地",
             },
             {
               cover: "table_pic/pic04.jpg",
-              taste: "綿密細緻",
-              sweetness: "超高",
-              feature: "迷人果香",
+              service: "外送、外帶自取、代買",
+              feature: "提供排隊代買、會員等級優惠制度",
+              payment: "現金看店家、信用卡、LINE Pay、Apple Pay",
+              preference: "首購優惠、免運、限時折扣、福幣美食金",
+              freight: "分為外送費、服務費，會依店家距離顯示在訂單頁面中",
+              area: "雙北",
             },
             {
               cover: "table_pic/pic05.jpg",
-              taste: "細緻肉厚",
-              sweetness: "高",
-              feature: "濃郁芒果香",
+              service: "外送、外帶自取、餐廳訂位",
+              feature: "訂餐賺紅利，點數抵運費及揪團功能",
+              payment: "現金、信用卡、Pi拍錢包",
+              preference: "首購優惠、運費折扣、滿額折抵",
+              freight: "NT$39/75",
+              area: "雙北、台中、台南、高雄、桃園、新竹",
             },
           ],
-          message01: "【五大外送平台比較】防疫在家，美食送到家",
+          message01: "【2021五大外送平台比較】防疫在家，美食送到家",
           checkName: [],
         };
       },
