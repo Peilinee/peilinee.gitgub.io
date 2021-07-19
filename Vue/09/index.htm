@@ -38,10 +38,16 @@
 
 	<form style="margin: 1rem 0">
 		<label>
-			<input type="checkbox" value="口感" v-model="checkName" value="口感">口感
+			<input type="checkbox" value="名稱" v-model="checkName" value="名稱">名稱
 		</label>
 		<label>
 			<input type="checkbox" value="甜度" v-model="checkName" value="甜度">甜度
+		</label>
+		<label>
+			<input type="checkbox" value="特色" v-model="checkName" value="特色">特色
+		</label>
+		<label>
+			<input type="checkbox" value="特色" v-model="checkName" value="特色">特色
 		</label>
 		<label>
 			<input type="checkbox" value="特色" v-model="checkName" value="特色">特色
@@ -84,13 +90,13 @@
         return {
           mangos: [
             {
-              cover: "table_pic/pic01.jpg",
+              cover: "table_pic/pic01.png",
               taste: "細緻肉厚",
               sweetness: "高",
               feature: "濃郁香氣",
             },
             {
-              cover: "table_pic/pic02.jpg",
+              cover: "table_pic/pic02.png",
               taste: "細緻多汁",
               sweetness: "清爽甜",
               feature: "水蜜桃香",
@@ -113,20 +119,8 @@
               sweetness: "高",
               feature: "濃郁芒果香",
             },
-            {
-              cover: "table_pic/pic06.jpg",
-              taste: "Q彈",
-              sweetness: "高",
-              feature: "淡雅香氣",
-            },
-            {
-              cover: "table_pic/pic07.jpg",
-              taste: "Q彈",
-              sweetness: "高",
-              feature: "清爽香氣",
-            },
           ],
-          message01: "【夏日芒果大賞】一次搞懂所有芒果品種",
+          message01: "【五大外送平台比較】防疫在家，美食送到家",
           checkName: [],
         };
       },
