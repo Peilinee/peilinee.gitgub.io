@@ -1,44 +1,116 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-		<title>課堂作業01</title>
-	<style>
-		div {
-			margin: 15px;
-			text-align: justify;
-			line-height: 30px;
-		}
-		h3 {
-			color: blue;
-		}
-		span {
-			color: red;
-			font-weight: bolder;
-		}
-	</style>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Shopping cart</title>
+<script src="https://unpkg.com/vue@next"></script>
+<style>
+    h2 {
+      color: orange;
+    }
+    h3 {
+      color: gray;
+      font-weight: bold;
+    }
+    h4 {
+      color: green;
+      font-weight: bold;
+    }
+    p {
+      color: brown;
+      font-weight: bold;
+    }
+    span {
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
 </head>
-	<body>
-        <h2>嘉賓果</h2>
-		<h3>長在樹幹上的葡萄</h3>
-		<div>
-			長相似葡萄，味道似葡萄，名字似葡萄，卻不是葡萄。披著紫色外衣的甚麼神秘的水果呢？答案是嘉賓果！嘉賓果(Jabuticaba)，除了有人叫它「樹葡萄」、「美味熱帶葡萄」，有一個非常美麗的別名──擬愛神木，是遠從中南美洲(巴西)而來的亞熱帶水果。
-		</div>
-		<div ><img src="pic01.jpg" width="400"></div>
-		<h3>古老的傳說與愛情</h3>
-		<div>
-			嘉賓果(Jabuticaba)在中南美洲不只是原產的特別水果，在巴西還流傳著一個關於嘉賓果的美麗傳說。在當地方言圖皮語中，
-			<span>Jabuti 是「烏龜」的意思，而 Caba 則指「地方」</span>，
-			這意味著將可在果樹附近找到烏龜。相傳勇猛善戰的圖皮人祖先曾所向披靡地征服附近的部落，卻因此熱惱了女巫師，將圖皮族聰慧美麗的女子變成沒有知覺、不會講話的果樹，深情的圖皮族戰士為了守護深愛的女子，終年守在果樹旁邊，隨著時間過去，勇猛的戰士變成行動緩慢的烏龜。戰士的深情感動了天神，天神賜予果樹能結出富含營養的果實，圖皮組的祖先相信，受到天神祝福的果樹，會保佑人們的愛情順遂、長久！
-		</div>
-		<div ><img src="pic02.jpg" width="400"></div>
-		<h3>嘉賓果樹成長的特色</h3>
-		<div>
-			嘉賓果最特別的地方就是「幹生花」，花與果實都是長在樹幹上的，嘉賓果開花時，整株樹幹開滿白色的小花，其壯麗不輸櫻花盛開的美景。花謝後，嘉賓果的果實就在樹幹上生長，像吹氣球一樣慢慢長大，還沒成熟時，翠綠色的果實很耀眼，但皮很厚籽很大顆；當樹葡萄慢慢成熟時，由綠轉紫，皮也慢慢變薄，籽越來越小顆，可以小到跟葡萄籽一樣，而且會非常甜。
-		</div>
-		<h3>資料來源:</h3>
-		<ul>
-			<li><a href="https://greenbox.tw/Home/BlogPostNew/5791" target="_blank">參考網址</a></li>
-		</ul>
-	</body>
+<body>
+<div id="shopping">
+	<h2>GOGOEAT!美食購物網</h2>
+	<h3>請輸入以下資訊</h3>
+	<form>
+		姓名: <input v-model="name"><br>
+		住址: <input v-model="address"><br>
+		手機: <input v-model="phone"><br>
+		電子郵件: <input v-model="email"><br>
+		指定送貨日期: <input type="date" v-model="date01"><br>
+		義美杏仁巧克力酥片(280g) 122元，購買數量: <input type="number" v-model="number01"><br>
+		孔雀咖啡捲心餅量販盒(189g) 82元，購買數量: <input type="number" v-model="number02"><br>
+		萬歲牌-杏仁小魚(270g/罐) 297元，購買數量: <input type="number" v-model="number03"><br>
+		義美小泡芙(171g) 79元，購買數量: <input type="number" v-model="number04"><br>
+		福義軒-手工芝麻蛋捲(500g) 285元，購買數量: <input type="number" v-model="number05"><br>
+		地瓜酥(240g) 120元，購買數量: <input type="number" v-model="number06"><br>
+	</form>
+	<shopping_cart :my-name="name"
+				   :my-address="address"
+				   :my-phone="phone"
+				   :my-email="email"
+				   :my-date="date01"
+				   :my-no01="number01"
+				   :my-no02="number02"
+				   :my-no03="number03"
+				   :my-no04="number04"
+				   :my-no05="number05"
+				   :my-no06="number06"
+	>
+	</shopping_cart>
+</div>
+
+<script>
+  const App = {
+    data() {
+      return {
+        name: '劉沛綾',
+        address: '新北市中和區橋和路160巷9號10樓',
+        phone: '0958871066',
+        email: 'peggy5468053@gmail.com',
+        date01: '',
+        number01: 0,
+        number02: 0,
+        number03: 0,
+        number04: 0,
+        number05: 0,
+        number06: 0
+      }
+    }
+  }
+
+  const app = Vue.createApp(App)
+
+  app.component('shopping_cart', {
+    props: ['myName','myAddress','myPhone','myEmail', 'myDate', 'myNo01', 'myNo02', 'myNo03', 'myNo04', 'myNo05', 'myNo06' ],
+    methods: {
+      subtotal: function(price){
+        switch(price){
+          case 122:return price * this.myNo01;break;
+          case 82:return price * this.myNo02;break;
+          case 297:return price * this.myNo03;break;
+          case 79:return price * this.myNo04;break;
+          case 285:return price * this.myNo05;break;
+          case 120:return price * this.myNo06;break;
+        }
+      },
+      totalAmount:function(){
+        return this.subtotal(122) + this.subtotal(82) + this.subtotal(297) + this.subtotal(79) + this.subtotal(285) + this.subtotal(120);
+      }
+    },
+    template: '<div><h4>您的購物車資訊如下:</h4>' +
+            '<p>姓名: {{ myName }} 先生/女士<br>' +
+            '住址: {{myAddress}}<br>' +
+            '手機: {{myPhone}}<br>' +
+            '電子郵件: {{myEmail}}<br>' +
+            '預定交貨日期: {{myDate}}<br>' +
+            '義美杏仁巧克力酥片(1盒/122元)共 {{myNo01}}單位，金額小計{{subtotal(122)}}元<br>' +
+            '孔雀咖啡捲心餅量販盒(1盒/82元)共 {{myNo02}}單位，金額小計{{subtotal(82)}}元<br>' +
+            '萬歲牌-杏仁小魚(1罐/297元)共 {{myNo03}}單位，金額小計{{subtotal(297)}}元<br>' +
+            '義美小泡芙(1包/79元)共 {{myNo04}}單位，金額小計{{subtotal(79)}}元<br>' +
+            '福義軒-手工芝麻蛋捲(1包/285元)共 {{myNo05}}單位，金額小計{{subtotal(285)}}元<br>' +
+            '地瓜酥(1包/120元)共 {{myNo06}}單位，金額小計{{subtotal(120)}}元<br>' +
+            '<h4>金額總計為 {{totalAmount()}}元</h4></div>'
+  })
+  app.mount('#shopping')
+</script>
+
+</body>
 </html>
