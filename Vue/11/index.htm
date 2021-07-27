@@ -1,44 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-		<title>課堂作業01</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<script src="https://unpkg.com/vue@next"></script>
+	<title>vue11</title>
 	<style>
-		div {
-			margin: 15px;
-			text-align: justify;
-			line-height: 30px;
-		}
-		h3 {
-			color: blue;
-		}
-		span {
-			color: red;
-			font-weight: bolder;
-		}
-	</style>
+        h1{
+        font-size: 35px;
+        color: green;
+        margin: 10px;
+        }
+        p{
+        color: gray;
+        font-size: 30px;
+        margin: 10px;
+        }
+        div {
+        font-size: 25px;
+        margin: 10px;
+        }
+    </style>
 </head>
-	<body>
-        <h2>嘉賓果</h2>
-		<h3>長在樹幹上的葡萄</h3>
-		<div>
-			長相似葡萄，味道似葡萄，名字似葡萄，卻不是葡萄。披著紫色外衣的甚麼神秘的水果呢？答案是嘉賓果！嘉賓果(Jabuticaba)，除了有人叫它「樹葡萄」、「美味熱帶葡萄」，有一個非常美麗的別名──擬愛神木，是遠從中南美洲(巴西)而來的亞熱帶水果。
-		</div>
-		<div ><img src="pic01.jpg" width="400"></div>
-		<h3>古老的傳說與愛情</h3>
-		<div>
-			嘉賓果(Jabuticaba)在中南美洲不只是原產的特別水果，在巴西還流傳著一個關於嘉賓果的美麗傳說。在當地方言圖皮語中，
-			<span>Jabuti 是「烏龜」的意思，而 Caba 則指「地方」</span>，
-			這意味著將可在果樹附近找到烏龜。相傳勇猛善戰的圖皮人祖先曾所向披靡地征服附近的部落，卻因此熱惱了女巫師，將圖皮族聰慧美麗的女子變成沒有知覺、不會講話的果樹，深情的圖皮族戰士為了守護深愛的女子，終年守在果樹旁邊，隨著時間過去，勇猛的戰士變成行動緩慢的烏龜。戰士的深情感動了天神，天神賜予果樹能結出富含營養的果實，圖皮組的祖先相信，受到天神祝福的果樹，會保佑人們的愛情順遂、長久！
-		</div>
-		<div ><img src="pic02.jpg" width="400"></div>
-		<h3>嘉賓果樹成長的特色</h3>
-		<div>
-			嘉賓果最特別的地方就是「幹生花」，花與果實都是長在樹幹上的，嘉賓果開花時，整株樹幹開滿白色的小花，其壯麗不輸櫻花盛開的美景。花謝後，嘉賓果的果實就在樹幹上生長，像吹氣球一樣慢慢長大，還沒成熟時，翠綠色的果實很耀眼，但皮很厚籽很大顆；當樹葡萄慢慢成熟時，由綠轉紫，皮也慢慢變薄，籽越來越小顆，可以小到跟葡萄籽一樣，而且會非常甜。
-		</div>
-		<h3>資料來源:</h3>
-		<ul>
-			<li><a href="https://greenbox.tw/Home/BlogPostNew/5791" target="_blank">參考網址</a></li>
-		</ul>
-	</body>
+<body>
+<div id="app">
+	<h1>匯率轉換</h1>
+	<p>1日幣＝0.25新台幣</p>
+	<P>1韓元＝0.0265</P>
+	<p>1美金＝28.28新台幣</p>
+	<p>1英鎊＝39.66新台幣</p>
+	<p>1歐元＝33.6新台幣</p>
+	<p>1人民幣＝4.38新台幣</p>
+	<div>台幣：<input type="text" v-model='twd'></div>
+	<div>日幣：<input type="text" v-model='JPY'></div>
+	<div>韓元：<input type="text" v-model='KRW'></div>
+	<div>美金：<input type="text" v-model='USD'></div>
+	<div>英鎊：<input type="text" v-model='GBP'></div>
+	<div>歐元：<input type="text" v-model='EUR'></div>
+	<div>人民幣：<input type="text" v-model='CNY'></div>
+</div>
+
+<script>
+        const vm = Vue.createApp({
+            data() {
+                return {
+                    twd : 0.25,
+                }
+            },
+            computed: {
+                JPY:{
+                    get(){
+                        return Number.parseFloat(Number(this.twd)/0.25).toFixed(3);
+                    },
+                    set(val){
+                        this.twd = Number.parseFloat(Number(val)*0.25).toFixed(3);
+                    }
+                },
+                KRW:{
+                    get(){
+                        return Number.parseFloat(Number(this.twd)/0.0265).toFixed(3);
+                    },
+                    set(val){
+                        this.twd = Number.parseFloat(Number(val)*0.0265).toFixed(3);
+                    }
+                },
+                USD:{
+                    get(){
+                        return Number.parseFloat(Number(this.twd)/28.28).toFixed(3)
+                    },
+                    set(val){
+                        this.twd = Number.parseFloat(Number(val)*28.28).toFixed(3)
+                    }
+                },
+                GBP:{
+                    get(){
+                        return Number.parseFloat(Number(this.twd)/39.66).toFixed(3)
+                    },
+                    set(val){
+                        this.twd = Number.parseFloat(Number(val)*39.66).toFixed(3)
+                    }
+                },
+                EUR:{
+                    get(){
+                        return Number.parseFloat(Number(this.twd)/33.6).toFixed(3)
+                    },
+                    set(val){
+                        this.twd = Number.parseFloat(Number(val)*33.6).toFixed(3)
+                    }
+                },
+                CNY:{
+                    get(){
+                        return Number.parseFloat(Number(this.twd)/4.38).toFixed(3)
+                    },
+                    set(val){
+                        this.twd = Number.parseFloat(Number(val)*4.38).toFixed(3)
+                    }
+                }
+             },
+        }).mount('#app')
+    </script>
+</body>
 </html>
