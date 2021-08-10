@@ -2,43 +2,149 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-		<title>課堂作業01</title>
+	<title>VUE14</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<script src="https://unpkg.com/vue@next"></script>
 	<style>
-		div {
-			margin: 15px;
-			text-align: justify;
-			line-height: 30px;
-		}
-		h3 {
-			color: blue;
-		}
-		span {
-			color: red;
-			font-weight: bolder;
-		}
-	</style>
+    div {
+      font-size: 15px;
+      color: black;
+      margin: 5px;
+    }
+      h2 {
+          color: coral;
+      }
+      h3 {
+          color: gray;
+      }
+      p1 {
+          color: red;
+      }
+      p {
+          color: blue ;
+      }
+      label {
+      margin-right: 0.5rem;
+    }
+  </style>
 </head>
-	<body>
-        <h2>嘉賓果</h2>
-		<h3>長在樹幹上的葡萄</h3>
-		<div>
-			長相似葡萄，味道似葡萄，名字似葡萄，卻不是葡萄。披著紫色外衣的甚麼神秘的水果呢？答案是嘉賓果！嘉賓果(Jabuticaba)，除了有人叫它「樹葡萄」、「美味熱帶葡萄」，有一個非常美麗的別名──擬愛神木，是遠從中南美洲(巴西)而來的亞熱帶水果。
-		</div>
-		<div ><img src="pic01.jpg" width="400"></div>
-		<h3>古老的傳說與愛情</h3>
-		<div>
-			嘉賓果(Jabuticaba)在中南美洲不只是原產的特別水果，在巴西還流傳著一個關於嘉賓果的美麗傳說。在當地方言圖皮語中，
-			<span>Jabuti 是「烏龜」的意思，而 Caba 則指「地方」</span>，
-			這意味著將可在果樹附近找到烏龜。相傳勇猛善戰的圖皮人祖先曾所向披靡地征服附近的部落，卻因此熱惱了女巫師，將圖皮族聰慧美麗的女子變成沒有知覺、不會講話的果樹，深情的圖皮族戰士為了守護深愛的女子，終年守在果樹旁邊，隨著時間過去，勇猛的戰士變成行動緩慢的烏龜。戰士的深情感動了天神，天神賜予果樹能結出富含營養的果實，圖皮組的祖先相信，受到天神祝福的果樹，會保佑人們的愛情順遂、長久！
-		</div>
-		<div ><img src="pic02.jpg" width="400"></div>
-		<h3>嘉賓果樹成長的特色</h3>
-		<div>
-			嘉賓果最特別的地方就是「幹生花」，花與果實都是長在樹幹上的，嘉賓果開花時，整株樹幹開滿白色的小花，其壯麗不輸櫻花盛開的美景。花謝後，嘉賓果的果實就在樹幹上生長，像吹氣球一樣慢慢長大，還沒成熟時，翠綠色的果實很耀眼，但皮很厚籽很大顆；當樹葡萄慢慢成熟時，由綠轉紫，皮也慢慢變薄，籽越來越小顆，可以小到跟葡萄籽一樣，而且會非常甜。
-		</div>
-		<h3>資料來源:</h3>
-		<ul>
-			<li><a href="https://greenbox.tw/Home/BlogPostNew/5791" target="_blank">參考網址</a></li>
-		</ul>
-	</body>
+
+<body>
+
+<div id="app">
+	<h2>現代生活型態問卷調查</h2>
+	<h3>請輸入基本資料</h3>
+	<form>
+		性別：
+		<input type="radio" id="男" value="男" v-model="gender"><label for="男">男</label>
+		<input type="radio" id="女" value="女" v-model="gender"><label for="女">女</label><br>
+		姓名： <input v-model="name"><br>
+		住址： <input v-model="address"><br>
+		手機： <input v-model="phone"><br>
+		電子郵件： <input v-model="email"><br>
+		生日： <input type="date" v-model="date01"><br>
+		身高： <input type="number" v-model="number01"><br>
+		體重： <input type="number" v-model="number01"><br>
+		<p>是否滿意自己的生活？</p>
+		<input type="radio" id="滿意" value="滿意" v-model="yes"><label for="滿意">滿意</label>
+		<input type="radio" id="不滿意" value="不滿意" v-model="yes"><label for="不滿意">不滿意</label><br>
+		<p>讀的科系或目前工作是否符合自己的期待？</p>
+		<input type="radio" id="符合" value="符合" v-model="no"><label for="符合">符合</label>
+		<input type="radio" id="不符合" value="不符合" v-model="no"><label for="不符合">不符合</label><br>
+		<p>一天平均使用手機的時間為？</p>
+		<input type="radio" id="0～3小時" value="0～3小時" v-model="time"><label for="0～3小時">0～3小時</label>
+		<input type="radio" id="4～6小時" value="4～6小時" v-model="time"><label for="4～6小時">4～6小時</label>
+		<input type="radio" id="7～9小時" value="7～9小時" v-model="time"><label for="7～9小時">7～9小時</label>
+		<input type="radio" id="10小時以上" value="10小時以上" v-model="time"><label for="10小時以上">10小時以上</label>
+		<br>
+		<p>一週平均運動幾天？</p>
+		<input type="radio" id="0天" value="0天" v-model="day"><label for="0天">0天</label>
+		<input type="radio" id="1～2天" value="1～2天" v-model="day"><label for="1～2天">1～2天</label>
+		<input type="radio" id="3天以上" value="3天以上" v-model="day"><label for="3天以上">3天以上</label>
+		<br>
+		<p>一天平均睡眠時間多長？</p>
+		<input type="radio" id="10小時以上" value="10小時以上" v-model="long"><label for="10小時以上">10小時以上</label>
+		<input type="radio" id="7～9小時" value="7～9小時" v-model="long"><label for="7～9小時">7～9小時</label>
+		<input type="radio" id="4～6小時" value="4～6小時" v-model="long"><label for="4～6小時">4～6小時</label>
+		<input type="radio" id="3小時以下" value="3小時以下" v-model="long"><label for="3小時以下">3小時以下</label>
+		<br>
+		<p>是否會抽菸？</p>
+		<input type="radio" id="抽" value="抽" v-model="smoke"><label for="抽">抽</label>
+		<input type="radio" id="不抽" value="不抽" v-model="smoke"><label for="不抽">不抽</label>
+		<br>
+		<p>一週平均喝幾杯手搖飲料？</p>
+		<input type="radio" id="0杯" value="0杯" v-model="drink"><label for="0杯">0杯</label>
+		<input type="radio" id="1～2杯" value="1～2杯" v-model="drink"><label for="1～2杯">1～2杯</label>
+		<input type="radio" id="3杯以上" value="3杯以上" v-model="drink"><label for="3杯以上">3杯以上</label>
+		<br>
+		<p>三餐主要如何解決？</p>
+		<input type="radio" id="自己煮最健康" value="自己煮最健康" v-model="food"><label for="自己煮最健康">自己煮最健康</label>
+		<input type="radio" id="叫外送最方便" value="叫外送最方便" v-model="food"><label for="叫外送最方便">叫外送最方便</label>
+		<input type="radio" id="打電話外帶" value="打電話外帶" v-model="food"><label for="打電話外帶">打電話外帶</label>
+		<br>
+		<p>主要通勤交通工具？</p>
+		<input type="radio" id="機車" value="機車" v-model="car"><label for="機車">機車</label>
+		<input type="radio" id="汽車" value="汽車" v-model="car"><label for="汽車">汽車</label>
+		<input type="radio" id="走路" value="走路" v-model="car"><label for="走路">走路</label>
+		<input type="radio" id="大眾運輸工具" value="大眾運輸工具" v-model="car"><label for="大眾運輸工具">大眾運輸工具</label>
+		<br>
+		<p>平常主要通過何種管道得知新聞資訊？（可複選）</p>
+		<input type="checkbox" id="搜尋引擎網路" value="搜尋引擎網路" v-model="news"><label for="搜尋引擎網路">搜尋引擎網路</label>
+		<input type="checkbox" id="社群媒體" value="社群媒體" v-model="news"><label for="社群媒體">社群媒體</label>
+		<input type="checkbox" id="電視" value="電視" v-model="news"><label for="電視">電視</label>
+		<input type="checkbox" id="親朋好友" value="親朋好友" v-model="news"><label for="親朋好友">親朋好友</label>
+		<input type="checkbox" id="我不看新聞" value="我不看新聞" v-model="news"><label for="我不看新聞">我不看新聞</label><br>
+		<p>個人or家庭擁有哪些現代科技產品？（可複選）</p>
+		<input type="checkbox" id="手機" value="手機" v-model="phone"><label for="手機">手機</label>
+		<input type="checkbox" id="電視" value="電視" v-model="phone"><label for="電視">電視</label>
+		<input type="checkbox" id="筆記型電腦" value="筆記型電腦" v-model="phone"><label for="筆記型電腦">筆記型電腦</label>
+		<input type="checkbox" id="桌上型電腦" value="桌上型電腦" v-model="phone"><label for="桌上型電腦">桌上型電腦</label>
+		<input type="checkbox" id="平板" value="平板" v-model="phone"><label for="平板">平板</label>
+		<input type="checkbox" id="遊戲機" value="遊戲機" v-model="phone"><label for="遊戲機">遊戲機</label>
+		<input type="checkbox" id="智慧型手錶" value="智慧型手錶" v-model="phone"><label for="智慧型手錶">智慧型手錶</label>
+		<input type="checkbox" id="智慧音箱" value="智慧音箱" v-model="phone"><label for="智慧音箱">智慧音箱</label>
+		<input type="checkbox" id="功能型機器人" value="功能型機器人" v-model="phone"><label for="功能型機器人">功能型機器人</label>
+		<p>空閒時喜歡做些什麼休閒活動？（可複選）</p>
+		<input type="checkbox" id="聽音樂" value="聽音樂" v-model="like"><label for="聽音樂">聽音樂</label>
+		<input type="checkbox" id="看電影/影片" value="看電影/影片" v-model="like"><label for="看電影/影片">看電影/影片</label>
+		<input type="checkbox" id="逛街" value="逛街" v-model="like"><label for="逛街">逛街</label>
+		<input type="checkbox" id="參觀展覽" value="參觀展覽" v-model="like"><label for="參觀展覽">參觀展覽</label>
+		<input type="checkbox" id="運動" value="運動" v-model="like"><label for="運動">運動</label>
+		<input type="checkbox" id="購物" value="購物" v-model="like"><label for="購物">購物</label>
+		<input type="checkbox" id="滑手機" value="滑手機" v-model="like"><label for="滑手機">滑手機</label>
+		<input type="checkbox" id="打遊戲" value="打遊戲" v-model="like"><label for="打遊戲">打遊戲</label>
+		<input type="checkbox" id="睡覺" value="睡覺" v-model="like"><label for="睡覺">睡覺</label>
+		<input type="checkbox" id="閱讀" value="閱讀" v-model="like"><label for="閱讀">閱讀</label>
+		<input type="checkbox" id="吃美食" value="吃美食" v-model="like"><label for="吃美食">吃美食</label>
+		<input type="checkbox" id="旅遊" value="旅遊" v-model="like"><label for="旅遊">旅遊</label>
+		<input type="checkbox" id="與親朋好友共度時光" value="與親朋好友共度時光" v-model="like"><label for="與親朋好友共度時光">與親朋好友共度時光</label>
+		<br>
+		<h3><button><p1>提交</p1></button></h3>
+</div>
+<script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+            gender:"",
+            yes:"",
+            no:"",
+            time:"",
+            day:"",
+            long:"",
+            smoke:"",
+            drink:"",
+            food:"",
+            car:"",
+            news:[],
+            phone:[],
+            like:[],
+        }
+      }
+    });
+
+
+    vm.mount('#app');
+
+  </script>
+</body>
 </html>
